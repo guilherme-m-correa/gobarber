@@ -3,3 +3,4 @@ yarn.lock
 tmp/*
 !tmp/.gitkeep
 .DS_Store
+coverage
