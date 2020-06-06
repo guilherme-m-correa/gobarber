@@ -13,6 +13,6 @@
       "./src/shared/infra/typeorm/database/migrations/*.ts"
    ],
    "cli": {
-      "migrationsDir": "./src/shared/infra/typeorm/database/migrations/*.ts"
+      "migrationsDir": "./src/shared/infra/typeorm/database/migrations"
    }
 }
