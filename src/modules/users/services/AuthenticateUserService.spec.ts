@@ -2,21 +2,16 @@ import AppError from '@shared/errors/AppError';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import AuthenticateUserService from './AuthenticateUserService';
-import CreateUserService from './CreateUserService';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
-let createUserService: CreateUserService;
 let authenticateUserService: AuthenticateUserService;
 
 describe('AuthenticateUser', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeHashProvider = new FakeHashProvider();
-    createUserService = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
+
     authenticateUserService = new AuthenticateUserService(
       fakeUsersRepository,
       fakeHashProvider,
@@ -24,7 +19,7 @@ describe('AuthenticateUser', () => {
   });
 
   it('should be able to authenticate', async () => {
-    await createUserService.execute({
+    await fakeUsersRepository.create({
       email: 'guilherme@gmail.com',
       password: '123456',
       name: 'Guilherme',
@@ -39,7 +34,7 @@ describe('AuthenticateUser', () => {
   });
 
   it('should not be able to authenticate with invalid password', async () => {
-    await createUserService.execute({
+    await fakeUsersRepository.create({
       email: 'guilherme@gmail.com',
       password: '123456',
       name: 'Guilherme',
@@ -54,7 +49,7 @@ describe('AuthenticateUser', () => {
   });
 
   it('should not be able to authenticate with a non existent user', async () => {
-    await createUserService.execute({
+    await fakeUsersRepository.create({
       email: 'guilherme@gmail.com',
       password: '123456',
       name: 'Guilherme',
