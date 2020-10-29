@@ -10,7 +10,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreateRepositoryService {
+class SendForgotPasswordEmailService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -48,11 +48,11 @@ class CreateRepositoryService {
         file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`,
+          link: `${process.env.APP_WEB_URL}/reset-password?token=${token}`,
         },
       },
     });
   }
 }
 
-export default CreateRepositoryService;
+export default SendForgotPasswordEmailService;

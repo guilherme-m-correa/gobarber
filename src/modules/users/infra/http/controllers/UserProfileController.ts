@@ -4,7 +4,7 @@ import UpdateUserProfileService from '@modules/users/services/UpdateUserProfileS
 import ShowUserProfileService from '@modules/users/services/ShowUserProfileService';
 import { classToClass } from 'class-transformer';
 
-export default class UpdateUserProfileController {
+export default class UserProfileController {
   public async show(request: Request, response: Response): Promise<Response> {
     const user_id = request.user.id;
 
